@@ -13,7 +13,8 @@ export default class GameComponent extends React.Component {
                 marginLeft: 40,
                 marginTop: 4,
             },
-            timeToStartFrom: 0
+            timeToStartFrom: 0,
+            count: true
         }
         this.changeFigure = this.changeFigure.bind(this);
         this.getColor = this.getColor.bind(this);
@@ -22,24 +23,24 @@ export default class GameComponent extends React.Component {
         let characters = "1234567890ABCDEF";
         let color = "#";
         for (let i = 0; i < 6; i++) {
-            color += characters[Math.floor(Math.random()*16)]
+            color += characters[Math.floor(Math.random() * 16)]
         }
         console.log(this.props);
         return color;
-     }
-    
+    }
+
 
     changeFigure() {
         let newDate = new Date();
-        
 
-            
-                console.log((newDate - this.props.date) / 1000);
-                
-                console.log((newDate - this.state.timeToStartFrom) / 1000);
-            
-       
-        
+        if (this.state.count) {
+            this.props.setTime((newDate - this.props.date) / 1000);
+            this.setState({ count: false });
+        } else {
+            this.props.setTime((newDate - this.state.timeToStartFrom) / 1000);
+        }
+
+
         this.setState({
             style: {
                 backgroundColor: this.getColor(),
@@ -57,6 +58,6 @@ export default class GameComponent extends React.Component {
         let date = new Date();
         return (
             <div style={this.state.style} onClick={this.changeFigure}></div>
-            );
+        );
     }
 }
