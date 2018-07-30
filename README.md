@@ -19,4 +19,4 @@ _HTML_
 
 * _Clone the repository_
 * _npm install_
-*_yarn run dev-server_
+* _yarn run dev-server_
