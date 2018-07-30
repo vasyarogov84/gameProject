@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { User } from "./components/user"
 import Navbar from "./components/navbar";
 import GameComponent from "./components/GameComponent";
+import GameOver from "./components/gameOver"
 
 
 class Game extends Component {
@@ -12,10 +13,14 @@ class Game extends Component {
             players: [],
             navbar: false,
             userInfo: true,
-            userTime: []
+            userTime: [],
+            gameover: false,
+            game: false
         }
         this.getName = this.getName.bind(this);
         this.setTime = this.setTime.bind(this);
+        this.finishGame = this.finishGame.bind(this);
+        this.newGame = this.newGame.bind(this);
     }
 
 
@@ -23,7 +28,8 @@ class Game extends Component {
         this.setState({
             players: [...this.state.players, player],
             navbar: true,
-            userInfo: false
+            userInfo: false,
+            game: true
         });
     }
 
@@ -31,6 +37,20 @@ class Game extends Component {
         this.setState({ userTime: [...this.state.userTime, time] });
         //console.log(this.state.userTime);
     }
+    finishGame() {
+        this.setState({
+            gameover: true,
+            game: false
+        });
+    }
+    newGame() {
+        this.setState({
+            gameover: false,
+            navbar: true,
+            userInfo: false,
+            game: true
+        });
+}
     render() {
         return (
 
@@ -38,18 +58,21 @@ class Game extends Component {
                 <div>
                     {this.state.navbar &&
                         <Navbar
-                            user={this.state.players}
-                            currentTime={this.state.userTime[this.state.userTime.length - 1]}
+                        user={this.state.players}
+                        currentTime={this.state.userTime[this.state.userTime.length - 1]}
+                        allTimes={this.state.userTime}
                         />}
                 </div>
                 <div>
                     {this.state.userInfo && <User getName={this.getName} />}
-                    {!this.state.userInfo &&
+                    {this.state.game &&
                         <GameComponent
-                            date={new Date()}
-                            setTime={this.setTime}
+                        date={new Date()}
+                        setTime={this.setTime}
+                        finishGame={this.finishGame}
                         />
                     }
+                    {this.state.gameover && <GameOver newGame={this.newGame}/>}
                 </div>
             </div>
         );

@@ -10,6 +10,7 @@ let Navbar = (props) => {
                     return <li key={el}>{el} {props.currentTime}</li>;
             })}
             </ol>
+            <p>Best Time:{Math.min.apply(null,props.allTimes)}</p>
         </div>
         
         );

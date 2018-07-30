@@ -12,9 +12,11 @@ export default class GameComponent extends React.Component {
                 height: 40,
                 marginLeft: 40,
                 marginTop: 4,
+                position: "absolute"
             },
             timeToStartFrom: 0,
-            count: true
+            count: true,
+            clicks: 1
         }
         this.changeFigure = this.changeFigure.bind(this);
         this.getColor = this.getColor.bind(this);
@@ -39,7 +41,7 @@ export default class GameComponent extends React.Component {
         } else {
             this.props.setTime((newDate - this.state.timeToStartFrom) / 1000);
         }
-
+        console.log(this.state.clicks);
 
         this.setState({
             style: {
@@ -48,10 +50,15 @@ export default class GameComponent extends React.Component {
                 width: Math.floor(Math.random() * 30 + 30),
                 height: Math.floor(Math.random() * 30 + 30),
                 marginLeft: Math.floor(Math.random() * 230 + 230),
-                marginTop: Math.floor(Math.random() * 230 + 230)
+                marginTop: Math.floor(Math.random() * 230 + 230),
+                position: "absolute"
             },
-            timeToStartFrom: newDate
+            timeToStartFrom: newDate,
+            clicks: this.state.clicks + 1
         });
+        if (this.state.clicks === 6) {
+            this.props.finishGame();
+        }
     }
 
     render() {
