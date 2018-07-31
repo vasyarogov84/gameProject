@@ -56,7 +56,7 @@ export default class GameComponent extends React.Component {
             timeToStartFrom: newDate,
             clicks: this.state.clicks + 1
         });
-        if (this.state.clicks === 6) {
+        if (this.state.clicks === 2) {
             this.props.finishGame();
         }
     }
