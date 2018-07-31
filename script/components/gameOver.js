@@ -4,17 +4,22 @@ import React from 'react';
 export default class GameOver extends React.Component {
     constructor(props) {
         super(props);
-        this.startAgain = this.startAgain.bind(this);
-    }
-    startAgain() {
-        this.props.newGame();
-    }
-
+     }
+    
     render() {
+        let style = {
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "table",
+
+        }
         return (
-            <div>
-                <button onClick={this.startAgain}>Start Over</button>
-                <button>Start As New Player</button>
+            <div style={{ paddingTop: 250 }}>
+                <button style={style} onClick={this.props.newGame}>Start Over</button>
+                <button
+                    style={style}
+                    onClick={this.props.startWithNewUser}
+                >Start As New Player</button>
             </div>
         );
     }

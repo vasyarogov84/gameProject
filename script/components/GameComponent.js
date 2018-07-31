@@ -7,11 +7,11 @@ export default class GameComponent extends React.Component {
         this.state = {
             style: {
                 backgroundColor: "green",
-                borderRadius: "50%",
-                width: 40,
-                height: 40,
-                marginLeft: 40,
-                marginTop: 4,
+                borderRadius: Math.floor(Math.random() * 50),
+                width: Math.floor(Math.random() * 30 + 30),
+                height: Math.floor(Math.random() * 30 + 30),
+                marginLeft: Math.floor(Math.random() * 230 + 230),
+                marginTop: Math.floor(Math.random() * 230 + 230),
                 position: "absolute"
             },
             timeToStartFrom: 0,
@@ -27,7 +27,7 @@ export default class GameComponent extends React.Component {
         for (let i = 0; i < 6; i++) {
             color += characters[Math.floor(Math.random() * 16)]
         }
-        console.log(this.props);
+       
         return color;
     }
 
@@ -41,7 +41,7 @@ export default class GameComponent extends React.Component {
         } else {
             this.props.setTime((newDate - this.state.timeToStartFrom) / 1000);
         }
-        console.log(this.state.clicks);
+        
 
         this.setState({
             style: {

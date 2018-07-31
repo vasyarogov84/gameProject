@@ -15,12 +15,14 @@ class Game extends Component {
             userInfo: true,
             userTime: [],
             gameover: false,
-            game: false
+            game: false,
+            groupOfPlayers: {}
         }
         this.getName = this.getName.bind(this);
         this.setTime = this.setTime.bind(this);
         this.finishGame = this.finishGame.bind(this);
         this.newGame = this.newGame.bind(this);
+        this.newUser = this.newUser.bind(this);
     }
 
 
@@ -35,7 +37,8 @@ class Game extends Component {
 
     setTime(time) {
         this.setState({ userTime: [...this.state.userTime, time] });
-        //console.log(this.state.userTime);
+        console.log("players", this.state.players);
+        console.log("userTime", this.state.userTime);
     }
     finishGame() {
         this.setState({
@@ -50,7 +53,13 @@ class Game extends Component {
             userInfo: false,
             game: true
         });
-}
+
+    }
+
+    newUser() {
+        console.log("New User ready to register");
+    }
+
     render() {
         return (
 
@@ -58,21 +67,25 @@ class Game extends Component {
                 <div>
                     {this.state.navbar &&
                         <Navbar
-                        user={this.state.players}
-                        currentTime={this.state.userTime[this.state.userTime.length - 1]}
-                        allTimes={this.state.userTime}
+                            user={this.state.players}
+                            currentTime={this.state.userTime[this.state.userTime.length - 1]}
+                            allTimes={this.state.userTime}
                         />}
                 </div>
                 <div>
                     {this.state.userInfo && <User getName={this.getName} />}
                     {this.state.game &&
                         <GameComponent
-                        date={new Date()}
-                        setTime={this.setTime}
-                        finishGame={this.finishGame}
+                            date={new Date()}
+                            setTime={this.setTime}
+                            finishGame={this.finishGame}
                         />
                     }
-                    {this.state.gameover && <GameOver newGame={this.newGame}/>}
+                    {this.state.gameover &&
+                        <GameOver
+                            newGame={this.newGame}
+                            startWithNewUser={this.newUser}
+                        />}
                 </div>
             </div>
         );
