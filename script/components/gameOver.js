@@ -2,10 +2,6 @@ import React from 'react';
 
 
 export default class GameOver extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let style = {
             marginLeft: "auto",

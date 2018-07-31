@@ -2,9 +2,7 @@ import React from "react";
 
 
 export default class GameComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+   state = {
             style: {
                 backgroundColor: "green",
                 borderRadius: Math.floor(Math.random() * 50),
@@ -18,10 +16,8 @@ export default class GameComponent extends React.Component {
             count: true,
             clicks: 1
         }
-        this.changeFigure = this.changeFigure.bind(this);
-        this.getColor = this.getColor.bind(this);
-    }
-    getColor() {
+      
+    getColor = () => {
         let characters = "1234567890ABCDEF";
         let color = "#";
         for (let i = 0; i < 6; i++) {
@@ -32,7 +28,7 @@ export default class GameComponent extends React.Component {
     }
 
 
-    changeFigure() {
+    changeFigure = () => {
         let newDate = new Date();
 
         if (this.state.count) {

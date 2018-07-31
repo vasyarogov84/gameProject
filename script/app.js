@@ -7,26 +7,20 @@ import GameOver from "./components/gameOver"
 
 
 class Game extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            players: [],
-            navbar: false,
-            userInfo: true,
-            userTime: [],
-            gameover: false,
-            game: false,
-            groupOfPlayers: []
-        }
-        this.getName = this.getName.bind(this);
-        this.setTime = this.setTime.bind(this);
-        this.finishGame = this.finishGame.bind(this);
-        this.newGame = this.newGame.bind(this);
-        this.newUser = this.newUser.bind(this);
+    state = {
+        players: [],
+        navbar: false,
+        userInfo: true,
+        userTime: [],
+        gameover: false,
+        game: false,
+        groupOfPlayers: []
     }
 
 
-    getName(player) {
+
+
+    getName = (player) => {
         this.setState({
             players: [...this.state.players, player],
             navbar: true,
@@ -35,18 +29,18 @@ class Game extends Component {
         });
     }
 
-    setTime(time) {
+    setTime = (time) => {
         this.setState({ userTime: [...this.state.userTime, time] });
         console.log("groupOfPlayers", this.state.groupOfPlayers);
         //console.log("userTime", this.state.userTime);
     }
-    finishGame() {
+    finishGame = () => {
         this.setState({
             gameover: true,
             game: false
         });
     }
-    newGame() {
+    newGame = () => {
         this.setState({
             gameover: false,
             navbar: true,
@@ -56,10 +50,10 @@ class Game extends Component {
 
     }
 
-    newUser() {
+    newUser = () => {
         let userProfile = [...this.state.players, Math.min.apply(null, this.state.userTime)];
         this.setState(() => ({
-            groupOfPlayers: [...this.state.groupOfPlayers,userProfile],
+            groupOfPlayers: [...this.state.groupOfPlayers, userProfile],
             players: [],
             userTime: [],
             gameover: false,
@@ -67,7 +61,7 @@ class Game extends Component {
             userInfo: true,
             game: false
         }));
-        
+
     }
 
     render() {
@@ -93,9 +87,9 @@ class Game extends Component {
                     }
                     {this.state.gameover &&
                         <GameOver
-                        newGame={this.newGame}
-                        startWithNewUser={this.newUser}
-                        finalTableOfPlayers={this.state.groupOfPlayers}
+                            newGame={this.newGame}
+                            startWithNewUser={this.newUser}
+                            finalTableOfPlayers={this.state.groupOfPlayers}
                         />}
                 </div>
             </div>
