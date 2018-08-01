@@ -77,7 +77,11 @@ class Game extends Component {
                         />}
                 </div>
                 <div>
-                    {this.state.userInfo && <User getName={this.getName} />}
+                    {this.state.userInfo &&
+                        <User
+                        getName={this.getName}
+                        finalTableOfPlayers={this.state.groupOfPlayers}
+                        />}
                     {this.state.game &&
                         <GameComponent
                             date={new Date()}

@@ -3,7 +3,10 @@ import Modal from "react-modal";
 
 
 export default class GameOver extends React.Component {
-   
+    componentWillMount(prevProps) {
+        console.log(prevProps);
+        Modal.setAppElement('body');
+    }
 
     render() {
         let style = {
@@ -13,12 +16,15 @@ export default class GameOver extends React.Component {
 
         }
         console.log(this.props);
+
+        
         
         return (
             
             <Modal isOpen={true} contentLabel="Standing"> 
                 <div style={style}>
-                   Current Player: {this.props.currentPlayer[0][0]}{this.props.currentPlayer[1]}
+                    Current Player: {this.props.currentPlayer[0][0]}({this.props.currentPlayer[1]})
+                    
                 <div style={style}>
                     <ol>
                         {this.props.finalTableOfPlayers.sort((a,b) => {
