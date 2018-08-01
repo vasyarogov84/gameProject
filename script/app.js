@@ -17,8 +17,7 @@ class Game extends Component {
         groupOfPlayers: []
     }
 
-
-
+    
 
     getName = (player) => {
         this.setState({
@@ -31,7 +30,7 @@ class Game extends Component {
 
     setTime = (time) => {
         this.setState({ userTime: [...this.state.userTime, time] });
-        console.log("groupOfPlayers", this.state.groupOfPlayers);
+        //console.log("groupOfPlayers", this.state.groupOfPlayers);
         //console.log("userTime", this.state.userTime);
     }
     finishGame = () => {
@@ -63,10 +62,11 @@ class Game extends Component {
         }));
 
     }
-
+    
     render() {
+        let bestTime = Math.min.apply(null, this.state.userTime);
         return (
-
+            
             <div>
                 <div>
                     {this.state.navbar &&
@@ -87,9 +87,10 @@ class Game extends Component {
                     }
                     {this.state.gameover &&
                         <GameOver
-                            newGame={this.newGame}
-                            startWithNewUser={this.newUser}
-                            finalTableOfPlayers={this.state.groupOfPlayers}
+                        newGame={this.newGame}
+                        startWithNewUser={this.newUser}
+                        finalTableOfPlayers={this.state.groupOfPlayers}
+                        currentPlayer={[...this.state.players,bestTime]}
                         />}
                 </div>
             </div>

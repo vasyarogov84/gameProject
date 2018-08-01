@@ -15,11 +15,11 @@ class Navbar extends React.Component {
             style = { "backgroundColor": "red" }
         }
         return (
-            <div style={{ "float": "right", "border": "1px solid black", "backgroundColor": "beige", "width": "10%", "paddingLeft": 40 }}>
+            <div style={{ "float": "right", "border": "1px solid black", "backgroundColor": "beige", "width": "12%", "paddingLeft": 40 }}>
 
                 <ul>
                     {this.props.user.map((el) => {
-                        return <li key={el}>{el}  {this.props.currentTime}</li>;
+                        return <li key={el}>{el[0]}  {this.props.currentTime}</li>;
                     })}
                 </ul>
                 <p >Best Time:<span style={style}>{Math.min.apply(null, this.props.allTimes)}</span></p>

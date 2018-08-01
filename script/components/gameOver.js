@@ -1,7 +1,10 @@
 import React from 'react';
+import Modal from "react-modal";
 
 
 export default class GameOver extends React.Component {
+   
+
     render() {
         let style = {
             marginLeft: "auto",
@@ -9,8 +12,13 @@ export default class GameOver extends React.Component {
             display: "table",
 
         }
+        console.log(this.props);
+        
         return (
-            <div>
+            
+            <Modal isOpen={true} contentLabel="Standing"> 
+                <div style={style}>
+                   Current Player: {this.props.currentPlayer[0][0]}{this.props.currentPlayer[1]}
                 <div style={style}>
                     <ol>
                         {this.props.finalTableOfPlayers.sort((a,b) => {
@@ -28,6 +36,7 @@ export default class GameOver extends React.Component {
                     >Start As New Player</button>
                 </div>
             </div>
+</Modal>
         );
     }
 }
