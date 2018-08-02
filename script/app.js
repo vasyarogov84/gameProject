@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import { User } from "./components/user"
 import Navbar from "./components/navbar";
 import GameComponent from "./components/GameComponent";
-import GameOver from "./components/gameOver"
+import GameOver from "./components/gameOver";
+import 'normalize.css/normalize.css'
+import "./styles/styles.scss"
 
 
 class Game extends Component {

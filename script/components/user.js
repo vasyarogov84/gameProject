@@ -7,7 +7,7 @@ class User extends React.Component {
         email: false,
         name: false,
         validEmail: true
-        
+
     }
     submitUser = (e) => {
         e.preventDefault();
@@ -15,7 +15,7 @@ class User extends React.Component {
         let email = e.target.elements.email.value;
         let info = [name, email];
         this.props.getName(info);
-        
+
     }
     checkName = (e) => {
         let name = e.target.value;
@@ -25,11 +25,11 @@ class User extends React.Component {
                 return { name: true }
             });
         } else {
-            this.setState({name : false})
+            this.setState({ name: false })
         }
     }
     checkEmail = (e) => {
-        
+
         let email = e.target.value;
         let emailChecker = false;
         if (this.props.finalTableOfPlayers.length !== 0) {
@@ -38,13 +38,13 @@ class User extends React.Component {
             });
         }
 
-        
+
 
         if (emailChecker) {
             this.setState({
                 validEmail: false,
                 email: false
-             });
+            });
         } else {
             this.setState({
                 validEmail: true,
@@ -62,24 +62,16 @@ class User extends React.Component {
     }
 
 
-
-
-
-
-    
-    
-
     check = () => {
         if (this.state.email && this.state.name && this.state.validEmail) {
-            
+
             return false;
         } return true;
     }
-  
+
 
     render() {
-        console.log(this.props);
-        let style = {
+         let style = {
             marginLeft: "auto",
             marginRight: "auto",
             display: "table",
@@ -87,12 +79,12 @@ class User extends React.Component {
         }
         return (
             <div>
-                <form style={style} onSubmit={this.submitUser}>
-                    Name: <input name="name" onChange={this.checkName}/>
-                    E-mail: <input name="email" onChange={this.checkEmail}/>
+                <form className="userForm" onSubmit={this.submitUser}>
+                    Name: <input name="name" onChange={this.checkName} />
+                    E-mail: <input name="email" onChange={this.checkEmail} />
                     <button disabled={this.check()}>Start Game</button>
                     {this.state.message && <p>Please Enter Valid Entries. If Start Game button stay disabled, please enter another e-mail address.</p>}
-                    {!this.state.validEmail && <p style={{"color":"red"}}>Email already used by other Player</p>}
+                    {!this.state.validEmail && <p style={{ "color": "red" }}>Email already used by other Player</p>}
                 </form>
 
 
