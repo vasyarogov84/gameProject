@@ -5,7 +5,8 @@ class User extends React.Component {
     state = {
         message: true,
         email: false,
-        name: false
+        name: false,
+        validEmail: true
         
     }
     submitUser = (e) => {
@@ -21,19 +22,55 @@ class User extends React.Component {
 
         if (name) {
             this.setState(() => {
-                return {name: true}
+                return { name: true }
             });
+        } else {
+            this.setState({name : false})
         }
     }
     checkEmail = (e) => {
+        
         let email = e.target.value;
-        if (validator.isEmail(email)) {
-            this.setState({email: true});
+        let emailChecker = false;
+        if (this.props.finalTableOfPlayers.length !== 0) {
+            emailChecker = this.props.finalTableOfPlayers.some((el) => {
+                return el[0][1] === email;
+            });
         }
+
+        
+
+        if (emailChecker) {
+            this.setState({
+                validEmail: false,
+                email: false
+             });
+        } else {
+            this.setState({
+                validEmail: true,
+                email: true
+            });
+        }
+
+        if (validator.isEmail(email)) {
+
+            this.setState({ email: true });
+        } else {
+            this.setState({ email: false });
+        }
+
     }
 
+
+
+
+
+
+    
+    
+
     check = () => {
-        if (this.state.email && this.state.name) {
+        if (this.state.email && this.state.name && this.state.validEmail) {
             
             return false;
         } return true;
@@ -41,7 +78,7 @@ class User extends React.Component {
   
 
     render() {
-       
+        console.log(this.props);
         let style = {
             marginLeft: "auto",
             marginRight: "auto",
@@ -55,7 +92,7 @@ class User extends React.Component {
                     E-mail: <input name="email" onChange={this.checkEmail}/>
                     <button disabled={this.check()}>Start Game</button>
                     {this.state.message && <p>Please Enter Valid Entries. If Start Game button stay disabled, please enter another e-mail address.</p>}
-                    
+                    {!this.state.validEmail && <p style={{"color":"red"}}>Email already used by other Player</p>}
                 </form>
 
 

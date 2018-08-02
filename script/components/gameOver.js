@@ -15,7 +15,7 @@ export default class GameOver extends React.Component {
             display: "table",
 
         }
-        console.log(this.props);
+        //console.log(this.props);
 
         
         
