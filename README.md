@@ -1,5 +1,3 @@
-# gameProject
-
 # _Viktor Grom_
 
 #### _App using JavaScript, React_
