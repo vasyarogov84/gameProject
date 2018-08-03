@@ -82,7 +82,7 @@ class User extends React.Component {
                 <form className="userForm" onSubmit={this.submitUser}>
                     Name: <input name="name" onChange={this.checkName} />
                     E-mail: <input name="email" onChange={this.checkEmail} />
-                    <button disabled={this.check()}>Start Game</button>
+                    <button className="button" disabled={this.check()}>Start Game</button>
                     {this.state.message && <p>Please Enter Valid Entries. If Start Game button stay disabled, please enter another e-mail address.</p>}
                     {!this.state.validEmail && <p style={{ "color": "red" }}>Email already used by other Player</p>}
                 </form>

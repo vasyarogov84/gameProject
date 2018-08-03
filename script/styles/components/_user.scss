@@ -1,7 +1,13 @@
 .userForm {
     margin:35rem auto  0rem auto;
-    
     display: table;
- 
-    font-size: 1.6rem
+    font-size: 1.6rem;
+    padding: 0 1.6rem;
+}
+
+.button:disabled {
+    background-color: lightblue;
+}
+.button {
+    background-color:lightgreen;
 }
