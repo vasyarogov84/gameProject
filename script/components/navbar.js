@@ -15,7 +15,13 @@ class Navbar extends React.Component {
             style = { "backgroundColor": "red" }
         }
         return (
-            <div style={{ "float": "right", "border": "1px solid black", "backgroundColor": "beige", "width": "12%", "paddingLeft": 40 }}>
+            <div style={{ "float": "right", 
+            "border": "1px solid black", 
+            "backgroundColor": "beige", 
+            "width": "12%", 
+            "paddingLeft": 40,
+            "fontSize": 16     
+         }}>
 
                 <ul>
                     {this.props.user.map((el) => {

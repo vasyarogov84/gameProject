@@ -45,8 +45,8 @@ export default class GameComponent extends React.Component {
                 borderRadius: Math.floor(Math.random() * 50),
                 width: Math.floor(Math.random() * 30 + 30),
                 height: Math.floor(Math.random() * 30 + 30),
-                marginLeft: Math.floor(Math.random() * 730 + 230),
-                marginTop: Math.floor(Math.random() * 730 + 230),
+                marginLeft: Math.floor(Math.random() * 730 ),
+                marginTop: Math.floor(Math.random() * 730),
                 position: "absolute"
             },
             timeToStartFrom: newDate,
