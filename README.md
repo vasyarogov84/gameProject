@@ -2,8 +2,6 @@
 
 #### _App using JavaScript, React_
 
-##  _This is simple application._
-
 ## Technologies Used
 
 _JavaScript_
